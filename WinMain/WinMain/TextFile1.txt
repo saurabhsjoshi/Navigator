@@ -1,0 +1,20 @@
+﻿
+        For Each p As Process In Process.GetProcessesByName(proce)
+            If (GetWindowPlacement(p.MainWindowHandle, wp)) Then
+                If p.Id = pi Then
+                    If wp.showCmd = SHOW_WINDOW.SW_SHOWMINIMIZE Then 'Or SHOW_WINDOW.SW_SHOWNORMAL Or SHOW_WINDOW.SW_NORMAL Then
+                        ShowWindow(p.MainWindowHandle, SHOW_WINDOW.SW_MAXIMIZE)
+                    ElseIf wp.showCmd = SHOW_WINDOW.SW_NORMAL Then
+                        ShowWindow(p.MainWindowHandle, SHOW_WINDOW.SW_MAXIMIZE)
+                    ElseIf wp.showCmd = SHOW_WINDOW.SW_SHOWNOACTIVATE Then
+                        ShowWindow(p.MainWindowHandle, SHOW_WINDOW.SW_NORMAL)
+                    ElseIf wp.showCmd = SHOW_WINDOW.SW_MAXIMIZE Then
+                        ShowWindow(p.MainWindowHandle, SHOW_WINDOW.SW_SHOWNORMAL)
+
+                        'ElseIf wp.showCmd = SHOW_WINDOW.SW_SHOWMINIMIZE Then 'SHOW_WINDOW.SW_HIDE Or SHOW_WINDOW.SW_SHOWNOACTIVATE  Then
+                        ' ShowWindow(p.MainWindowHandle, SHOW_WINDOW.SW_MAXIMIZE)
+                    End If
+                End If
+
+            End If
+        Next
